@@ -27,7 +27,7 @@ const Header = observer(() => {
           <button
             className='header__button'
             onClick={logout}
-          > Выйти </button>
+          > Logout </button>
           :
           null
         }

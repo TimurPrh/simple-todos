@@ -8,18 +8,14 @@
     padding-left: 0;
   }
   &__item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     list-style-type: none;
-    padding: 15px 10px;
+    padding: 10px 10px 15px 10px;
     margin: 5px 0;
     border: 1px solid rgba(0,0,0, .2);
     border-radius: 4px;
     transition: .6s all;
     --animate-duration: .4s;
     &_active {
-      // border-color: rgb(231, 41, 57);
       border-color: #FFE12B;
       .todos-list__item-favorite {
         path {
@@ -29,7 +25,17 @@
       }
     }
   }
+  &__item-created-at {
+    color: rgba(0,0,0, .75);
+    font-size: 14px;
+  }
+  &__item-upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__item-text {
+    margin-top: 10px;
     color: rgba(0,0,0, .75);
   }
   &__item-icons {

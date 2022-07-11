@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ReactComponent as StarIcon } from '../../assets/icons/star.svg';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/delete.svg';
 import './TodosList.scss'
@@ -23,8 +23,8 @@ const TodosList = observer(() => {
     refContainer[id].current.classList.add('animate__animated', 'animate__pulse');
 
     const handleAnimationEnd = async () => {
-      list.toggleFavorite(id)
       updateTodo(id, {favorite: list.getTodo(id).favorite})
+      list.toggleFavorite(id)
     }
 
     refContainer[id].current.addEventListener('animationend', handleAnimationEnd, {once: true});
@@ -45,7 +45,7 @@ const TodosList = observer(() => {
       {list.todos.length > 0 ? 
       <>
         <div className="todos-list__header">
-          Привет, {user.user.nickName}! Вот все твои заметки:
+          Нi, {user.user.nickName}! Here are all your notes:
         </div>
         <ul className='todos-list__list'>
           {list.todos
@@ -61,27 +61,32 @@ const TodosList = observer(() => {
                 'todos-list__item'
               }
             >
+              <div className='todos-list__item-upper'>
+                <div className='todos-list__item-created-at'>
+                  {new Date(todo.createdAt).toLocaleString()}
+                </div>
+                <div className='todos-list__item-icons'>
+                  <button
+                    type='button' 
+                    className={todo.favorite ? 
+                      'todos-list__item-icon todos-list__item-favorite'
+                      :
+                      'todos-list__item-icon todos-list__item-icon_active todos-list__item-favorite '
+                    }
+                    onClick={() => toggleFavorite(todo.id)}
+                  >
+                    <StarComponent />
+                  </button>
+                  <button 
+                    className='todos-list__item-icon todos-list__item-delete'
+                    onClick={() => deleteItem(todo.id)}
+                  >
+                    <DeleteComponent />
+                  </button>
+                </div>
+              </div>
               <div className='todos-list__item-text'>
                 {todo.text}
-              </div>
-              <div className='todos-list__item-icons'>
-                <button
-                  type='button' 
-                  className={todo.favorite ? 
-                    'todos-list__item-icon todos-list__item-favorite'
-                    :
-                    'todos-list__item-icon todos-list__item-icon_active todos-list__item-favorite '
-                  }
-                  onClick={() => toggleFavorite(todo.id)}
-                >
-                  <StarComponent />
-                </button>
-                <button 
-                  className='todos-list__item-icon todos-list__item-delete'
-                  onClick={() => deleteItem(todo.id)}
-                >
-                  <DeleteComponent />
-                </button>
               </div>
             </li>
           )}

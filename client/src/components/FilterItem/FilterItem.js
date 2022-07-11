@@ -31,12 +31,12 @@ const FilterItem = () => {
           value={favorite}
           onChange={e => setLocalFavorite(e.target.checked)}
         />
-        Избранное
+        Favorites
       </label>
       <input 
         className='filter-item__input'
         type='text'
-        placeholder='Введите текст фильтра'
+        placeholder='Enter filter text'
         value={value}
         onChange={e => setLocalFilterText(e.target.value)}
       />

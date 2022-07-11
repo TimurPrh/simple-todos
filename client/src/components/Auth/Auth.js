@@ -32,15 +32,15 @@ const Auth = () => {
         <div className='auth__wrapper'>
           <div className='auth__header'>
             {isLogin ?
-              'Войти'
+              'Login'
               :
-              'Зарегистрироваться'
+              'Sign up'
             }
           </div>
           <input 
             className='auth__input'
             type='text'
-            placeholder={'Введите логин'}
+            placeholder={'Enter your username'}
             name='nickName'
             value={nickName}
             onChange={e => setNickName(e.target.value)}
@@ -48,7 +48,7 @@ const Auth = () => {
           <input 
             className='auth__input'
             type='password'
-            placeholder='Введите пароль'
+            placeholder='Enter the password'
             name='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
@@ -58,7 +58,7 @@ const Auth = () => {
               isLogin ?
               <>
                 <div className='auth__check'>
-                  <div className='auth__text'>Еще не зарегистрированы?</div>
+                  <div className='auth__text'>Not registered yet?</div>
                   <button
                     type='button'
                     className='auth__secondary-button'
@@ -68,7 +68,7 @@ const Auth = () => {
                       }
                     }
                   >
-                    Зарегистрироваться
+                    Sign up
                   </button>
                 </div>
                 <button
@@ -76,13 +76,13 @@ const Auth = () => {
                   className='auth__primary-button'
                   onClick={click}
                 >
-                  Войти
+                  Login
                 </button>
               </>
               :
               <>
                 <div className='auth__check'>
-                  <div className='auth__text'>Уже зарегистрированы?</div>
+                  <div className='auth__text'>Already registered?</div>
                   <button
                     type='button'
                     className='auth__secondary-button'
@@ -91,7 +91,7 @@ const Auth = () => {
                       setIsLogin(true)
                     }}
                   >
-                    Войти
+                    Login
                   </button>
                 </div>
                 <button
@@ -99,7 +99,7 @@ const Auth = () => {
                   className='auth__primary-button'
                   onClick={click}
                 >
-                  Зарегистрироваться
+                  Sign up
                 </button>
               </>
             }

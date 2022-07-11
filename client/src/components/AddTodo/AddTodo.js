@@ -15,14 +15,14 @@ const AddTodo = observer(() => {
     if (value.length > 0) {
       const res = await createTodo(value)
       if (res.id) {
-        list.addItem(value)
+        list.addItem(res)
       }
 
       setValue('')
       return list.todos
     }
 
-    alert ('Пустой текст!')
+    alert ('Empty note!')
   }
 
 
@@ -31,7 +31,7 @@ const AddTodo = observer(() => {
       <input 
         className='add-todo__input'
         type='text'
-        placeholder='Введите текст новой заметки'
+        placeholder='Enter the text of the new note'
         value={value}
         onChange={e => setValue(e.target.value)}
       />
@@ -39,7 +39,7 @@ const AddTodo = observer(() => {
         className='add-todo__button'
         onClick={(e) => addTodo(e, value)}
       >
-        Добавить
+        Add
       </button>
     </form>
   );

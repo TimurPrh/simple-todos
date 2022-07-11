@@ -21,12 +21,6 @@ class TodosController {
       const {id} = req.params
       const {favorite} = req.body
 
-
-      console.group('CHANGE')
-      console.log(id)
-      console.log(favorite)
-      console.groupEnd()
-
       const todo = await Todos.findOne({ where: { id, userId: req.user.id } });
 
       if (todo) {
